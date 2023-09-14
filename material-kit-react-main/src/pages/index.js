@@ -10,10 +10,31 @@ import { OverviewTasksProgress } from 'src/sections/overview/overview-tasks-prog
 import { OverviewTotalCustomers } from 'src/sections/overview/overview-total-customers';
 import { OverviewTotalProfit } from 'src/sections/overview/overview-total-profit';
 import { OverviewTraffic } from 'src/sections/overview/overview-traffic';
+import { useEffect, useState } from 'react';
 
 const now = new Date();
+const randomNums=()=>{
+  let sum=100
+  const numbers = []
+  for (let i = 0; i < 3; i++) {
+      const randomNumber = Math.floor(Math.random() * sum)
+      sum -= randomNumber < 0 ? 0 : randomNumber
+      numbers.push(randomNumber < 0 ? 0 : randomNumber)
+  }
+  
+  return numbers
+}
+const Page = () =>{
+  const [chartData,setChartData]=useState([33, 45, 22]);
+  
+  useEffect(() => {
+    const id = setInterval(() => {
+      setChartData(randomNums())
+    }, 1000)
+    return () => clearInterval(id)
+}, [chartData])
 
-const Page = () => (
+  return (
   <>
     <Head>
       <title>
@@ -89,6 +110,10 @@ const Page = () => (
                 {
                   name: 'Last year',
                   data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13]
+                },
+                {
+                  name: 'The year befor last year',
+                  data: [11, 5, 8, 9, 2, 9, 3, 7, 11, 5, 14, 15]
                 }
               ]}
               sx={{ height: '100%' }}
@@ -100,7 +125,7 @@ const Page = () => (
             lg={4}
           >
             <OverviewTraffic
-              chartSeries={[63, 15, 22]}
+              chartSeries={chartData}
               labels={['Desktop', 'Tablet', 'Phone']}
               sx={{ height: '100%' }}
             />
@@ -221,7 +246,7 @@ const Page = () => (
       </Container>
     </Box>
   </>
-);
+);}
 
 Page.getLayout = (page) => (
   <DashboardLayout>
