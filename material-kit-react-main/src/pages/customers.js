@@ -268,6 +268,7 @@ const Page = () => {
                   variant="contained"
                   onClick={()=>
                     getEnv().then((res) => {
+                      console.log(res)
                     // if (envs.every(e => e != res.data.data)) {
                     //   navigate(PAGE_PATH.ROOT + '/404', { replace: true });
                     // }

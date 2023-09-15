@@ -31,9 +31,9 @@ request.interceptors.response.use(
         console.log("reponse success")
         stopProgress()
         if (response.status === 200) {
-            if (response.data.code || (response.headers['content-type'] && response.headers['content-type'].indexOf("APPLICATION/OCTET-STREAM") != -1)) {
+            // if (response.headers['content-type'] && response.headers['content-type'].indexOf("APPLICATION/OCTET-STREAM") != -1) {
                 return Promise.resolve(response)
-            }
+            // }
         } else {
             return Promise.reject(response)
         }
