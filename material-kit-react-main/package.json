@@ -13,6 +13,7 @@
     "lint": "next lint",
     "lint-fix": "next lint --fix"
   },
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@emotion/cache": "11.10.5",
     "@emotion/react": "11.10.6",
@@ -33,7 +34,8 @@
     "react-apexcharts": "1.4.0",
     "react-dom": "18.2.0",
     "simplebar-react": "^3.2.1",
-    "yup": "1.0.0"
+    "yup": "1.0.0",
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "@types/node": "18.13.0",
