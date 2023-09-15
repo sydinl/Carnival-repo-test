@@ -1,5 +1,5 @@
 import { getAuth } from "src/api/login";
-import { All_ACCESS, BACK_PATH, PAGE_PATH, ROLES_ACCESS } from "./Contants";
+import { All_ACCESS, BACK_PATH, PAGE_PATH, ROLES_ACCESS } from "./Constants";
 
 function isEmpty(val) {
     return (val === undefined || val == null || val.length <= 0) ? true : false;

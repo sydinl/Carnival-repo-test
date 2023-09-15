@@ -10,6 +10,7 @@ import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { CustomersTable } from 'src/sections/customer/customers-table';
 import { CustomersSearch } from 'src/sections/customer/customers-search';
 import { applyPagination } from 'src/utils/apply-pagination';
+import { getEnv } from 'src/api/login';
 
 const now = new Date();
 
@@ -257,6 +258,25 @@ const Page = () => {
                   variant="contained"
                 >
                   Add
+                </Button>
+                <Button
+                  startIcon={(
+                    <SvgIcon fontSize="small">
+                      <PlusIcon />
+                    </SvgIcon>
+                  )}
+                  variant="contained"
+                  onClick={()=>
+                    getEnv().then((res) => {
+                    // if (envs.every(e => e != res.data.data)) {
+                    //   navigate(PAGE_PATH.ROOT + '/404', { replace: true });
+                    // }
+                  }
+                  
+                  )
+                }
+                >
+                  getEnv
                 </Button>
               </div>
             </Stack>

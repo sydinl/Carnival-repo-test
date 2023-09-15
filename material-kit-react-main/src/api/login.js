@@ -1,5 +1,5 @@
 const { default: request } = require("src/utils/request")
-const { BACK_PATH } = require("src/utils/Contants")
+const { BACK_PATH } = require("src/utils/Constants")
 
 const doLogin = (data) => {
     return request({
