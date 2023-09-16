@@ -22,7 +22,7 @@ export const Layout = (props) => {
       >
         <Grid
           xs={12}
-          lg={6}
+          lg={12}
           sx={{
             backgroundColor: 'background.paper',
             display: 'flex',
@@ -54,7 +54,7 @@ export const Layout = (props) => {
           </Box>
           {children}
         </Grid>
-        <Grid
+        {/* <Grid
           xs={12}
           lg={6}
           sx={{
@@ -100,7 +100,7 @@ export const Layout = (props) => {
               src="/assets/auth-illustration.svg"
             />
           </Box>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Box>
   );
