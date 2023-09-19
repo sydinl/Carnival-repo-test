@@ -28,6 +28,14 @@ export function createPalette() {
       secondary: neutral[500],
       disabled: alpha(neutral[900], 0.38)
     },
-    warning
+    warning,
+    custom:{
+      contrastText: '#ffffff',
+      main: '#002c5f'
+    },
+    grey: {
+      contrastText: '#ffffff',
+      main: '#808080'
+    }
   };
 }

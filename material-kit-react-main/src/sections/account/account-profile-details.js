@@ -169,7 +169,7 @@ export const AccountProfileDetails = () => {
         </CardContent>
         <Divider />
         <CardActions sx={{ justifyContent: 'flex-end' }}>
-          <Button variant="contained">
+          <Button variant="contained" onClick={()=>confirm("aaa")}>
             Save details
           </Button>
         </CardActions>

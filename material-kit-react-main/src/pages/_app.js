@@ -10,6 +10,8 @@ import { createTheme } from 'src/theme';
 import { createEmotionCache } from 'src/utils/create-emotion-cache';
 import 'simplebar-react/dist/simplebar.min.css';
 import SimpleBackdrop from 'src/components/SimpleBackDrop';
+import AlertDialog from 'src/dialog/AlertDialog';
+import ConfirmDialog from 'src/dialog/ConfirmDialog';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -39,6 +41,8 @@ const App = (props) => {
         <AuthProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+            <AlertDialog/>
+            <ConfirmDialog/>
             <SimpleBackdrop/>
             <AuthConsumer>
               {
