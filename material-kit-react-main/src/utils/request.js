@@ -13,6 +13,7 @@ request.interceptors.request.use(
         if (noAuthrized(config.url)) {
             cancel("no authorized to access")
         }
+        config.url = PAGE_PATH.ROOT + config.url//add backout rootpath
         config.url = config.url.replace("//", "/")
         console.log("start request")
         startProgress()

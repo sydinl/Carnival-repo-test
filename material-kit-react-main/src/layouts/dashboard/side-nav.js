@@ -71,7 +71,7 @@ export const SideNav = (props) => {
                 color="inherit"
                 variant="subtitle1"
               >
-                Devias
+                Carnival
               </Typography>
               <Typography
                 color="neutral.400"

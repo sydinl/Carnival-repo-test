@@ -37,8 +37,8 @@ export const items = [
     )
   },
   {
-    title: 'Account',
-    path: '/account',
+    title: 'Auto processing',
+    path: '/autoProcessing',
     icon: (
       <SvgIcon fontSize="small">
         <UserIcon />

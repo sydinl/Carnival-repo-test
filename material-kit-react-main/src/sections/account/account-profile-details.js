@@ -10,42 +10,46 @@ import {
   TextField,
   Unstable_Grid2 as Grid
 } from '@mui/material';
+import { getTableList } from 'src/api/report-template';
 
-const states = [
+
+const endpoints = [
   {
-    value: 'alabama',
-    label: 'Alabama'
+    value: 'carnival database',
+    label: 'Carnival DB'
   },
   {
-    value: 'new-york',
-    label: 'New York'
-  },
-  {
-    value: 'san-francisco',
-    label: 'San Francisco'
-  },
-  {
-    value: 'los-angeles',
-    label: 'Los Angeles'
+    value: 'storage',
+    label: 'Azure Storage'
   }
 ];
-
 export const AccountProfileDetails = () => {
   const [values, setValues] = useState({
-    firstName: 'Anika',
-    lastName: 'Visser',
-    email: 'demo@devias.io',
-    phone: '',
-    state: 'los-angeles',
-    country: 'USA'
+    sourceEnd: 'carnival database',
+    destinationEnd: 'storage',
+    source: ''
   });
-
+  const [tableList,setTableList] =  useState([])
   const handleChange = useCallback(
     (event) => {
+      if(event.target.name==='sourceEnd'){
+        if(event.target.value==='carnival database'){
+          setTableList(['car_report','car_report1'])
+          // getTableList(event.target.value).then((res)=>{
+          //     setTableList(['car_report'])
+          // })
+        }else {
+          setTableList([])
+          values.source='car_report'
+        }
+      }
+      
+
       setValues((prevState) => ({
         ...prevState,
         [event.target.name]: event.target.value
-      }));
+      }))
+     
     },
     []
   );
@@ -80,13 +84,23 @@ export const AccountProfileDetails = () => {
               >
                 <TextField
                   fullWidth
-                  helperText="Please specify the first name"
-                  label="First name"
-                  name="firstName"
+                  label="Select source endpoint"
+                  name="sourceEnd"
                   onChange={handleChange}
                   required
-                  value={values.firstName}
-                />
+                  select
+                  SelectProps={{ native: true }}
+                  value={values.sourceEnd}
+                >
+                  {endpoints.map((option) => (
+                    <option
+                      key={option.value}
+                      value={option.value}
+                    >
+                      {option.label}
+                    </option>
+                  ))}
+                </TextField>
               </Grid>
               <Grid
                 xs={12}
@@ -94,25 +108,59 @@ export const AccountProfileDetails = () => {
               >
                 <TextField
                   fullWidth
-                  label="Last name"
-                  name="lastName"
+                  label="Select destination endpoint"
+                  name="destinationEnd"
                   onChange={handleChange}
                   required
-                  value={values.lastName}
-                />
+                  select
+                  SelectProps={{ native: true }}
+                  value={values.destinationEnd}
+                >
+                  {endpoints.map((option) => (
+                    <option
+                      key={option.value}
+                      value={option.value}
+                    >
+                      {option.label}
+                    </option>
+                  ))}
+                </TextField>
               </Grid>
               <Grid
                 xs={12}
                 md={6}
               >
-                <TextField
+                {tableList.length===0?(
+                  <TextField
+                      fullWidth
+                      label="Source"
+                      name="source"
+                      onChange={handleChange}
+                      required
+                      value={values.source}
+                    />
+                ):(
+                  <TextField
                   fullWidth
-                  label="Email Address"
-                  name="email"
+                  label="Select source table"
+                  name="source"
                   onChange={handleChange}
                   required
-                  value={values.email}
-                />
+                  select
+                  SelectProps={{ native: true }}
+                  value={values.source}
+                >
+                  {tableList.map((table,idx) => (
+                    <option
+                      key={idx}
+                      value={table}
+                    >
+                     {table}
+                    </option>
+                  ))}
+                </TextField>
+                )}
+               
               </Grid>
               <Grid
                 xs={12}
@@ -133,7 +181,7 @@ export const AccountProfileDetails = () => {
               >
                 <TextField
                   fullWidth
-                  label="Country"
+                  label="srcField"
                   name="country"
                   onChange={handleChange}
                   required
@@ -144,25 +192,14 @@ export const AccountProfileDetails = () => {
                 xs={12}
                 md={6}
               >
-                <TextField
+               <TextField
                   fullWidth
-                  label="Select State"
-                  name="state"
+                  label="Country"
+                  name="country"
                   onChange={handleChange}
                   required
-                  select
-                  SelectProps={{ native: true }}
-                  value={values.state}
-                >
-                  {states.map((option) => (
-                    <option
-                      key={option.value}
-                      value={option.value}
-                    >
-                      {option.label}
-                    </option>
-                  ))}
-                </TextField>
+                  value={values.country}
+                />
               </Grid>
             </Grid>
           </Box>
